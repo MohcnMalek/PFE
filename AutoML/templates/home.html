@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PLUTO-AI</title>
+    <style>
+      /* Début du CSS */
+      :root {
+        --primary-color: #5c48ee;
+        --primary-color-dark: #0f1e6a;
+        --secondary-color: #f9fafe;
+        --text-color: #333333;
+        --white: #ffffff;
+        --max-width: 1200px;
+      }
+
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Monaco, monospace; /* Déclaration de la police */
+        background-color: var(--secondary-color);
+        font-size: 1.2rem; /* Augmenter la taille de la police */
+        line-height: 1.5; /* Augmenter l'interligne */
+    }
+     .navbar-wrapper {
+       background-color: black;
+       padding: 15px 0; /* Ajustez le padding selon vos besoins */
+     }
+    
+     nav {
+       max-width: var(--max-width);
+       margin: auto;
+       display: flex;
+       align-items: center;
+     }
+    
+     .nav__logo a {
+      font-family: Monaco, monospace;
+      font-size: 4rem; /* Augmenter la taille de la police */
+      font-weight: bold; /* Garder le texte en gras */
+      color: white; /* Changer la couleur du texte en blanc */
+      text-decoration: none;
+      transition: 0.3s;
+    }
+    
+    
+    .nav__links {
+      font-family: Monaco, monospace;
+      text-align: left;
+      list-style: none;
+      display: flex;
+      
+      gap: 1rem;
+    }
+    .link {
+      list-style: none;
+      display: inline; /* Pour que les éléments s'affichent en ligne */
+    }
+    .link a {
+      padding: 0.5rem 1rem;
+      font-size: 1.2rem; /* Augmenter la taille de la police */
+      font-weight: bold; /* Garder le texte en gras */
+      color: white; /* Changer la couleur du texte en blanc */
+      text-decoration: none;
+      transition: 0.3s;
+    }
+    
+    .link a:hover {
+      color: var(--primary-color);
+    }
+
+      
+      .container {
+        font-family: Monaco, monospace;
+        max-width: var(--max-width);
+        margin: auto;
+        padding: 1rem;
+        min-height: calc(100vh - 100px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+
+      .content__container {
+        font-family: Monaco, monospace;
+        margin-bottom: 4rem;
+      }
+      .center-button {
+        display: flex;
+        justify-content: center;
+      }
+
+      /* Ajoutez ces styles CSS pour le titre "How to Learn" */
+.content__container h1 {
+  font-family: Monaco, monospace;
+  font-size: 3rem;
+  font-weight: 400;
+  line-height: 3.5rem;
+  color: var(--primary-color-dark);
+  margin-bottom: 1rem;
+}
+
+.heading__1 {
+  font-family: Monaco, monospace;
+  font-weight: 700;
+}
+
+.heading__2 {
+  font-family: Monaco, monospace;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+/* Styles pour les rectangles */
+.rectangle-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.top-rectangles,
+.bottom-rectangles {
+  display: flex;
+}
+
+.rectangle {
+  width: 300px;
+  height: 300px;
+  background-color: #5c48ee;
+  margin: 20px;
+  border-radius: 30px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.rectangle p {
+  font-family: Monaco, monospace;
+  font-size: 1rem;
+  color: var(--text-color);
+}
+
+
+      .content__container p {
+        font-family: Monaco, monospace;
+        font-size: 1rem;
+        color: var(--text-color);
+        margin-bottom: 2rem;
+      }
+
+      .content__container form {
+        font-family: Monaco, monospace;
+        display: flex;
+        align-items: center;
+      }
+
+      .content__container input {
+        font-family: Monaco, monospace;
+        width: 100%;
+        max-width: 300px;
+        padding: 1rem;
+        font-size: 0.8rem;
+        outline: none;
+        border: none;
+        box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .content__container button {
+        font-family: Monaco, monospace;
+        width: fit-content;
+        padding: 1rem;
+        font-size: 0.8rem;
+        white-space: nowrap;
+        background-color: var(--primary-color);
+        color: var(--white);
+        outline: none;
+        border: none;
+        box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+        transition: 0.3s;
+        cursor: pointer;
+      }
+
+      .content__container button:hover {
+        background-color: var(--primary-color-dark);
+      }
+
+
+      @media (max-width: 900px) {
+        .link a:not(.nav__btn) {
+          display: none;
+        }
+
+        .container {
+          grid-template-columns: repeat(1, 1fr);
+        }
+
+        .content__container {
+          text-align: center;
+        }
+
+        .content__container form {
+          margin-right: auto;
+          margin-left: auto;
+        }
+
+        
+      }
+      .left-content ul {
+        list-style-type: none;
+        padding: 0;
+        text-align: left;
+    }
+
+    .left-content li {
+        margin-bottom: 10px;
+        padding: 10px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+    }
+
+    .left-content li:hover {
+        transform: scale(1.02);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+
+
+    .title-container {
+      text-align: center; /* Centrer le titre horizontalement */
+    }
+    
+    
+    .title {
+      font-family: "Arial", sans-serif; /* Utiliser une police de caractères plus audacieuse */
+      font-size: 3.5rem; /* Augmenter légèrement la taille du titre */
+    }
+    .title {
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Ajouter une ombre portée */
+    }
+    
+    
+
+    .title:hover {
+      color: var(--primary-color);
+      transform: scale(1.1);
+      transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+    }
+    
+    
+
+    .space {
+      height: 50px; /* Vous pouvez ajuster la hauteur selon vos besoins */
+    }
+    
+    
+
+    
+
+    /* Animation d'arrière-plan */
+    #bg-wrap {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    </style>
+</head>
+<body>
+    <!-- Animation d'arrière-plan -->
+    <div id="bg-wrap">
+      <svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <radialGradient id="Gradient1" cx="50%" cy="50%" fx="0.441602%" fy="50%" r=".5">
+            <animate attributeName="fx" dur="34s" values="0%;3%;0%" repeatCount="indefinite"></animate>
+            <stop offset="0%" stop-color="rgba(255, 0, 255, 1)"></stop>
+            <stop offset="100%" stop-color="rgba(255, 0, 255, 0)"></stop>
+          </radialGradient>
+          <radialGradient id="Gradient2" cx="50%" cy="50%" fx="2.68147%" fy="50%" r=".5">
+            <animate attributeName="fx" dur="23.5s" values="0%;3%;0%" repeatCount="indefinite"></animate>
+            <stop offset="0%" stop-color="rgba(255, 255, 0, 1)"></stop>
+            <stop offset="100%" stop-color="rgba(255, 255, 0, 0)"></stop>
+          </radialGradient>
+          <radialGradient id="Gradient3" cx="50%" cy="50%" fx="0.836536%" fy="50%" r=".5">
+            <animate attributeName="fx" dur="21.5s" values="0%;3%;0%" repeatCount="indefinite"></animate>
+            <stop offset="0%" stop-color="rgba(0, 255, 255, 1)"></stop>
+            <stop offset="100%" stop-color="rgba(0, 255, 255, 0)"></stop>
+          </radialGradient>
+        </defs>
+        <rect x="13.744%" y="1.18473%" width="100%" height="100%" fill="url(#Gradient1)" transform="rotate(334.41 50 50)">
+          <animate attributeName="x" dur="20s" values="25%;0%;25%" repeatCount="indefinite"></animate>
+          <animate attributeName="y" dur="21s" values="0%;25%;0%" repeatCount="indefinite"></animate>
+          <animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="7s" repeatCount="indefinite"></animateTransform>
+        </rect>
+        <rect x="-2.17916%" y="35.4267%" width="100%" height="100%" fill="url(#Gradient2)" transform="rotate(255.072 50 50)">
+          <animate attributeName="x" dur="23s" values="-25%;0%;-25%" repeatCount="indefinite"></animate>
+          <animate attributeName="y" dur="24s" values="0%;50%;0%" repeatCount="indefinite"></animate>
+          <animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="12s" repeatCount="indefinite"></animateTransform>
+        </rect>
+        <rect x="9.00483%" y="14.5733%" width="100%" height="100%" fill="url(#Gradient3)" transform="rotate(139.903 50 50)">
+          <animate attributeName="x" dur="25s" values="0%;25%;0%" repeatCount="indefinite"></animate>
+          <animate attributeName="y" dur="12s" values="0%;25%;0%" repeatCount="indefinite"></animate>
+          <animateTransform attributeName="transform" type="rotate" from="360 50 50" to="0 50 50" dur="9s" repeatCount="indefinite"></animateTransform>
+        </rect>
+      </svg>
+    </div>
+
+    <!-- Contenu de votre page -->
+    <!-- Envelopper la barre de navigation avec un arrière-plan noir -->
+    <div class="navbar-wrapper">
+      <!-- Barre de navigation -->
+      <nav>
+  <div class="nav__logo"><a href="#">PLUTO-AI</a></div>
+  <div class="nav__links">
+    <ul>
+      <li class="link"><a href="#">About Us</a></li>
+      <li class="link"><a href="#">Services</a></li>
+      <li class="link"><a href="#">How to learn ML</a></li>
+      <li class="link"><a href="#">How are we?</a></li>
+      <li class="link"><a href="#">ContactUS</a></li>
+    </ul>
+    <ul>
+      <li class="link"><a href="{% url 'login' %}" class="nav__btn">Log in</a></li>
+      <li class="link"><a href="{% url 'signup' %}" class="nav__btn">Sign up</a></li>
+    </ul>
+  </div>
+</nav>
+    </div>
+    
+    <section class="container">
+      <div class="content__container">
+        
+        <!-- Votre contenu -->
+        <h1>
+          PLUTO<br />
+          <span class="heading__1">A Machine Learning Platform</span><br />
+          <span class="heading__2">in The World</span>
+        </h1>
+        <p>
+            Le machine learning est un domaine de l'intelligence artificielle où les ordinateurs apprennent à partir de données sans être explicitement programmés. En utilisant des modèles statistiques et des techniques d'optimisation, ces algorithmes identifient des modèles dans les données pour effectuer des prédictions ou prendre des décisions.
+
+            Son objectif principal est de développer des modèles capables de généraliser à partir des données d'entraînement, ce qui signifie qu'ils peuvent faire des prédictions précises sur de nouvelles données qu'ils n'ont jamais vues auparavant. Ces modèles sont utilisés dans divers domaines tels que la classification d'images, la reconnaissance vocale, la recommandation de produits, la détection de fraudes, et bien d'autres.
+        </p>
+        <form class="center-button">
+          <button type="submit">SIGN-UP NOW</button>
+        </form>
+      </div>
+      </div>
+      
+    <div class="container">
+        <div class="left-content">
+            <h1>Brainstorm ideas with Pluto-AI</h1>
+            <p>Get started by selecting a task below:</p>
+            <ul>
+                <li>Brainstorm names for my fantasy football team</li>
+                <li>Summarize this article as a table of pros and cons</li>
+                <li>Plan a trip to see the northern lights in Norway</li>
+                <li>Give me ideas for a customer loyalty program in a small bookstore</li>
+                <li>Help me pick a gift for my dad who loves fishing</li>
+                <li>Recommend a dish to impress a picky eater</li>
+                <li>Help me debug a Python script automating daily reports</li>
+                <li>Draft an email requesting a deadline extension for my project</li>
+            </ul>
+        </div>
+    </div>
+
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+    html,body,h1,h2,h3,h4 {font-family:"Lato", sans-serif}
+    .mySlides {display:none}
+    .w3-tag, .fa {cursor:pointer}
+    .w3-tag {height:15px;width:15px;padding:0;margin-top:6px}
+    </style>
+    <body>
+
+    
+
+    <!-- Content -->
+    <div class="w3-content" style="max-width:1100px;margin-top:80px;margin-bottom:80px">
+
+   <!-- Partie 1: Grille -->
+<div class="w3-row w3-container">
+  <div class="w3-center w3-padding-64">
+    <span class="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-16">What AI and Us We can Offer</span>
+  </div>
+  <div class="w3-col l3 m6 w3-light-grey w3-container w3-padding-16">
+    <h3>Analyse Précise et Prédictions Fiables</h3>
+    <p>Notre plateforme de ML fournit des analyses précises et des prédictions fiables, alimentées par des algorithmes avancés.
+    </p>
+  </div>
+
+  <div class="w3-col l3 m6 w3-grey w3-container w3-padding-16">
+    <h3>API ChatGPT Intégrables</h3>
+    <p>Avec API ChatGPT, intégrez facilement des fonctionnalités de conversation et de génération de texte à votre site web.
+      .</p>
+  </div>
+
+  <div class="w3-col l3 m6 w3-dark-grey w3-container w3-padding-16">
+    <h3>Traitement du Langage Naturel </h3>
+    <p>des techniques de traitement du langage naturel de pointe pour fournir des insights pertinents à partir de données textuelles</p>
+  </div>
+  <div class="w3-col l3 m6 w3-black w3-container w3-padding-16">
+    <h3>Expérience Utilisateur Améliorée</h3>
+    <p>Grâce à notre technologie, offrez à vos utilisateurs une expérience améliorée et une prise de décision plus éclairée dans divers domaines.</p>
+  </div>
+</div>
+
+<!-- Espace entre les deux parties -->
+<div style="height: 250px;"></div>
+
+<!-- Partie 2: Section -->
+<section class="container">
+  <div class="title-container">
+    <h1 class="title">How to Learn Machine Learning</h1>
+  </div>
+  <div class="rectangle-container">
+    <div class="top-rectangles">
+      <!-- Contenu des rectangles -->
+      <div class="rectangle">
+        <p style="text-align: center;"><strong>1</strong></p>
+        <p><strong>Comprendre les fondamentaux des mathématiques et de la statistique :</strong><br>
+          Avant de plonger dans le machine learning, il est essentiel de maîtriser les concepts de base des mathématiques comme l'algèbre linéaire, le calcul différentiel, ainsi que les statistiques .
+        </p>
+      </div>
+      <div class="rectangle">
+        <p style="text-align: center;"><strong>2</strong></p>
+        <p><strong>Apprendre les principes de base de la programmation :</strong><br>
+          Acquérir des compétences en programmation est crucial pour implémenter les algorithmes de machine learning. Commencez par apprendre un langage de programmation comme Python, qui est largement utilisé dans le domaine.
+        </p>
+      </div>
+      <div class="rectangle">
+        <p style="text-align: center;"><strong>3</strong></p>
+        <p><strong>Explorer les concepts de base du machine learning :</strong><br>
+          Familiarisez-vous avec les concepts fondamentaux du machine learning tels que la régression, la classification, le clustering, et la validation croisée. Comprenez comment fonctionnent les algorithmes d'apprentissage supervisé et non supervisé.
+        </p>
+      </div>
+      <div class="rectangle">
+        <p style="text-align: center;"><strong>4</strong></p>
+        <p><strong>Découvrir les différentes techniques de prétraitement des données :</strong><br>
+          Apprenez les techniques de prétraitement des données telles que la normalisation, le traitement des valeurs manquantes, la réduction de dimensionnalité. Une bonne préparation est essentielle pour obtenir de bons résultats .
+        </p>
+      </div>
+    </div>
+    <div class="bottom-rectangles">
+      <!-- Contenu des rectangles -->
+      <div class="rectangle">
+        <p style="text-align: center;"><strong>5</strong></p>
+        <p><strong>Plonger dans les bibliothèques de machine learning :</strong><br>
+          Explorez les bibliothèques populaires de machine learning telles que Scikit-learn, TensorFlow et PyTorch. Apprenez à utiliser ces bibliothèques pour implémenter différents algorithmes de machine learning et résoudre des problèmes pratiques.
+        </p>
+      </div>
+      <div class="rectangle">
+        <p style="text-align: center;"><strong>6</strong></p>
+        <p><strong>Pratiquer à travers des projets :</strong><br>
+          La pratique est essentielle pour maîtriser le machine learning. Travaillez sur des projets en utilisant des ensembles de données du  réel. Cela vous aidera à appliquer vos connaissances théoriques et à développer vos compétences en résolution de problèmes.
+        </p>
+      </div>
+      <div class="rectangle">
+        <p style="text-align: center;"><strong>7</strong></p>
+        <p><strong>Explorer les concepts avancés :</strong><br>
+          Une fois que vous maîtrisez les bases, plongez dans des sujets plus avancés tels que le deep learning, et le traitement du langage naturel (NLP). Ces domaines élargiront votre compréhension du machine learning et vous permettront de résoudre des problèmes plus complexes.
+        </p>
+      </div>
+      <div class="rectangle">
+        <p style="text-align: center;"><strong>8</strong></p>
+        <p><strong>Restez à jour avec les dernières avancées :</strong><br>
+          Le domaine du machine learning évolue rapidement. Restez à jour avec les dernières recherches, les nouveaux algorithmes et les meilleures pratiques en suivant des blogs, des cours en ligne, des conférences et des publications académiques.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+    
+  
+
+
+      <!-- Grid -->
+  <div class="w3-row-padding" id="about">
+    <div class="w3-center w3-padding-64">
+      <span class="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-16">Who We Are</span>
+    </div>
+
+    <div class="w3-third w3-margin-bottom">
+      <div class="w3-card-4">
+        <div class="w3-container">
+          <h3>Abdelkrim Boutouile</h3>
+          <p class="w3-opacity">Etudiant</p>
+          <p>L'étudiant en science des données exploite les données pour extraire des insights pertinents et résoudre des problèmes complexes à l'aide de techniques d'analyse et de modélisation avancées.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="w3-third w3-margin-bottom">
+      <div class="w3-card-4">
+        <div class="w3-container">
+          <h3>Mohssine Malek</h3>
+          <p class="w3-opacity">Etudiant</p>
+          <p>L'étudiant en science des données exploite les données pour extraire des insights pertinents et résoudre des problèmes complexes à l'aide de techniques d'analyse et de modélisation avancées.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="w3-third w3-margin-bottom">
+      <div class="w3-card-4">
+        <div class="w3-container">
+          <h3>Mr. Fahd Karami</h3>
+          <p class="w3-opacity">Professeur</p>
+          <p>Le professeur encadrant cet étudiant guide et supervise ses projets de recherche, l'aidant à développer ses compétences analytiques et son expertise dans le domaine de la science des données.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+     
+
+      <!-- Footer -->
+      <footer class="w3-container w3-padding-32 w3-light-grey w3-center">
+       
+        <a href="#" class="w3-button w3-black w3-margin"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
+          <div class="w3-xlarge w3-section">
+            <a href="lien_facebook_officiel"><i class="fa fa-facebook-official w3-hover-opacity"></i></a>
+            <a href="lien_instagram_officiel"><i class="fa fa-instagram w3-hover-opacity"></i></a>
+            <a href="lien_snapchat_officiel"><i class="fa fa-snapchat w3-hover-opacity"></i></a>
+            <a href="lien_pinterest_officiel"><i class="fa fa-pinterest-p w3-hover-opacity"></i></a>
+            <a href="lien_twitter_officiel"><i class="fa fa-twitter w3-hover-opacity"></i></a>
+            <a href="lien_linkedin_officiel"><i class="fa fa-linkedin w3-hover-opacity"></i></a>
+          </div>
+
+      </footer>
+
+    </div>
+
+    <script>
+
+      
+    // Slideshow
+    var slideIndex = 1;
+    showDivs(slideIndex);
+
+    function plusDivs(n) {
+      showDivs(slideIndex += n);
+    }
+
+    function currentDiv(n) {
+      showDivs(slideIndex = n);
+    }
+
+    function showDivs(n) {
+      var i;
+      var x = document.getElementsByClassName("mySlides");
+      var dots = document.getElementsByClassName("demodots");
+      if (n > x.length) {slideIndex = 1}    
+      if (n < 1) {slideIndex = x.length} ;
+      for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";  
+      }
+      for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" w3-white", "");
+      }
+      x[slideIndex-1].style.display = "block";  
+      dots[slideIndex-1].className += " w3-white";
+    }
+    </script>
+
+    <!-- Fin du code HTML à ajouter -->
+    
+  </body>
+</html>
